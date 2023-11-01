@@ -7,13 +7,11 @@ class SessionController {
   async store(req, res) {
     
     const { email, password } = req.body;
-    // Verificando se esse email existe
+
     const user = await User.findOne({email});
     if (!user) {
       return res.status(401).json({ error: 'Usuario não existe.' });
     }
-
-    // Verificar se a senha nao bate.
     if ((await user.password != password)) {
       return res.status(401).json({ error: 'Senha incorreta.' });
     }
@@ -40,12 +38,10 @@ class SessionController {
     }
   
     const [, token] = authToken.split(' ');
-    //console.log(token)
     try {
       const decoded = await promisify(jwt.verify)(authToken, authConfig.secret);
       const email = decoded.email
       const user = await User.findOne({email});
-      //console.log("USUARIO AUTENTICADO",user)
       if (user) 
       return res.status(200).json({user})
       else console.log("Error")

@@ -6,18 +6,14 @@ class PedidoController {
     const {_id} = req.params;
 
     try {
-      // Obter os produtos no carrinho com seus preços
+
       const user = await User.findById({ _id });
       const {cartItems, productQuantities} = req.body;
-      console.log("ITEMS", cartItems)
-      console.log("QUANTITY",productQuantities)
-      
       const products = cartItems.map((item) => ({
-        id_product: item.id, // Mapeia o id do item para id_product
-        quantity: productQuantities[item.id], // Mapeia a quantidade do item para quantity
+        id_product: item.id, 
+        quantity: productQuantities[item.id], 
       }));
-      console.log("Products", products);
-      
+
       const pedido = new Pedido({
         name_user: user.name,
         deliveryAddress:user.address,

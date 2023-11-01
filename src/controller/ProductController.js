@@ -3,7 +3,7 @@ import Product from '../models/Product';
 class ProductController {
 
   async populate(req, res) {
-    // Verificando se esse email existe
+    
     const equipments = await Product.create(req.body)
     console.log(req.body)
     return res.json(equipments)

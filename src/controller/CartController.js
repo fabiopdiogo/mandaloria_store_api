@@ -3,10 +3,10 @@ import Cart from "../models/Cart";
 class CartController {
   
   async store(req, res) {
-    const itemsToAdd = req.body; // Vetor de objetos JSON
+    const itemsToAdd = req.body; 
 
     try {
-      const cartItems = await Cart.create(itemsToAdd); // Crie novos documentos do modelo Cart
+      const cartItems = await Cart.create(itemsToAdd);
 
       console.log('Itens adicionados ao carrinho:', cartItems);
 
@@ -27,7 +27,7 @@ class CartController {
       const cart = await Cart.findOne({ id_user });
   
       if (!cart) {
-        return res.json({ cartItems: [] }); // Retorna um carrinho vazio se não houver carrinho para o usuário.
+        return res.json({ cartItems: [] });
       }
   
       return res.json({ cartItems: cart.items });
@@ -48,7 +48,7 @@ class CartController {
         return res.status(404).json({ error: 'Produto não encontrado no carrinho' });
       }
 
-      // Atualize a quantidade do produto no carrinho
+      
       cartItem.quantity = quantity;
       await cartItem.save();
 
