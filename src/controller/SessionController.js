@@ -34,7 +34,7 @@ class SessionController {
   async validate(req, res, next){
     
     const authToken = req.headers.authorization;
-    //console.log(authToken)
+    
     if (!authToken) {
       return res.status(401).json({ error: 'Token não existe.' });
     }
@@ -45,7 +45,7 @@ class SessionController {
       const decoded = await promisify(jwt.verify)(authToken, authConfig.secret);
       const email = decoded.email
       const user = await User.findOne({email});
-      //console.log(user)
+      //console.log("USUARIO AUTENTICADO",user)
       if (user) 
       return res.status(200).json({user})
       else console.log("Error")

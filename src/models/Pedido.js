@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose"
-  const PurchaseSchema = new Schema({
+  const PedidoSchema = new Schema({
     name_user: { type: String, required: true },
     deliveryAddress: { type: String},
     items: [
@@ -11,4 +11,4 @@ import { Schema, model } from "mongoose"
     ]    
  })
 
-module.exports = model('Purchase', PurchaseSchema);
+module.exports = model('Pedido', PedidoSchema);

@@ -9,9 +9,11 @@ class ProductController {
     return res.json(equipments)
   }
   async getAllProducts(req, res) {
+    
     try {       
-      const product = await Product.find();
-      return res.json({ product });
+      const products = await Product.find();
+      console.log(products)
+      return res.json({ products });
     } catch (error) {
       return res.status(500).json({ error: 'Erro ao buscar o produto', message: error.message });
     }
