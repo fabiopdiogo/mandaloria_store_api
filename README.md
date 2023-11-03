@@ -1,14 +1,22 @@
-# Mandalorian Store (Front-End)
-
-![Print da pagina](./public/Screenshot.png)
+# Mandalorian Store (Back-End)
 
 # Como foi o desenvolvimento do projeto?
 
-Nesse projeto utilizei pela primeira vez Typescript com React e Next. Utilizei tambem pela primeira vez o conceito de Context API, no modelo de estrutura de pages do Next.
-Em alguns componentes mantive uma pagina de module.css para estilização, porque reutilizei de outros projetos, mas em maioria utilizei Styled-Components, que consigo concentrar
-o CSS e o TypeScript no mesmo codigo.
+No back-end utilizei o Express para receber as requisições do client e armazenalas. Para manipular a criação das tabelas utilizei a biblioteca Mongoose.
+O cadastro de usuarios e os pedidos estão sendo armazenados no MongoDB.
+No começo do projeto, defini salvar os items adicionados ao carrinho no banco, e depois salvar-los junto ao nome e endereço do usuário na tabela de Pedidos.
+Porem defini enviar dados do carrinho para a tabela Pedidos ao confirmar a compra, e no controller de Pedidos fazer a junção dos dados do carrinho com os do usuario.
 
-## Criado por
+# Funções basicas da API
+## User Conntroller 
 
-Criado por mim Fabio Diogo. 
+Função "store" de cadastro, função "update" para atualizar o cadastro e função "delete" para exclusão do usuario do banco.
 
+## Session Controller
+Função "store" de cadastro da sessão do usuario no sistema e função "validate" para validar o token e persistir o login do usuario.
+
+## Pedido Controller
+Função "store" para armazenar o pedido no banco de dados.
+
+## Product Controller
+Função "store" para armazenar os equipamentos ja fornecidos no banco de dados.
